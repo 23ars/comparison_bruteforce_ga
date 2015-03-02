@@ -5,7 +5,9 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ic_project", "ic_project\ic_project.vcxproj", "{F43A19B2-6FE9-489A-899A-8D88829E6F98}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BruteForceDLL", "BruteForceDLL\BruteForceDLL.vcxproj", "{FC9FBB9B-C4E7-4977-994D-356B943BF35B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BruteForceDLL", "BruteForceDLL\BruteForceDLL.vcxproj", "{019CFFD5-B5E4-4274-A390-3326532568F9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HashingFunctionsDll", "HashingFunctionsDll\HashingFunctionsDll.vcxproj", "{299620C9-62E5-41D2-B7EB-C206B90BAD77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,14 @@ Global
 		{F43A19B2-6FE9-489A-899A-8D88829E6F98}.Debug|Win32.Build.0 = Debug|Win32
 		{F43A19B2-6FE9-489A-899A-8D88829E6F98}.Release|Win32.ActiveCfg = Release|Win32
 		{F43A19B2-6FE9-489A-899A-8D88829E6F98}.Release|Win32.Build.0 = Release|Win32
-		{FC9FBB9B-C4E7-4977-994D-356B943BF35B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{FC9FBB9B-C4E7-4977-994D-356B943BF35B}.Debug|Win32.Build.0 = Debug|Win32
-		{FC9FBB9B-C4E7-4977-994D-356B943BF35B}.Release|Win32.ActiveCfg = Release|Win32
-		{FC9FBB9B-C4E7-4977-994D-356B943BF35B}.Release|Win32.Build.0 = Release|Win32
+		{019CFFD5-B5E4-4274-A390-3326532568F9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{019CFFD5-B5E4-4274-A390-3326532568F9}.Debug|Win32.Build.0 = Debug|Win32
+		{019CFFD5-B5E4-4274-A390-3326532568F9}.Release|Win32.ActiveCfg = Release|Win32
+		{019CFFD5-B5E4-4274-A390-3326532568F9}.Release|Win32.Build.0 = Release|Win32
+		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Debug|Win32.Build.0 = Debug|Win32
+		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Release|Win32.ActiveCfg = Release|Win32
+		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
