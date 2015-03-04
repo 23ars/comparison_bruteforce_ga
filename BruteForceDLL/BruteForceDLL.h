@@ -13,6 +13,7 @@ public:
 	void bruteForce(std::string generateString);
 
 private:
-	void recurse(int width, int position, std::string baseString);
+	static void recurse(int threadNo,std::string availableCharacters, int width, int position, std::string baseString);
 	const std::string availableCharacters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789_-";
+	
 };

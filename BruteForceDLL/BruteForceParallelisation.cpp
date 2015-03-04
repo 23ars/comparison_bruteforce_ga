@@ -4,15 +4,15 @@
 
 BruteForceParallelisation::BruteForceParallelisation()
 {
-	isWordFound = false;ff
+	isWordFound = false;
 
 }
-void BruteForceParallelisation::executeTaskInParallel(int width, int position, std::string baseString, void(*pThreadConsumer)(int, int, std::string))
+void BruteForceParallelisation::executeTaskInParallel(std::string availableCharacters, int width, int position, std::string baseString, void(*pThreadConsumer)(int threadNo,std::string, int, int, std::string))
 {
 	size_t numberOfThreads;
 	concurrency::parallel_invoke(
-		[&]{pThreadConsumer(width, position, baseString); },
-		[&]{pThreadConsumer(width+1, position, baseString); }
+		[&]{pThreadConsumer(0,availableCharacters,width, position, baseString); },
+		[&]{pThreadConsumer(1, availableCharacters, width, position, baseString); }
 		);
 	
 }
