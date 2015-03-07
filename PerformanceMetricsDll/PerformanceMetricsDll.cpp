@@ -1,0 +1,47 @@
+#include "stdafx.h"
+#include "PerformanceMetricsDll.h"
+
+void PerformanceMetrics::startClockTicksCounter()
+{
+	clockTicks = clock();
+}
+
+void PerformanceMetrics::stopClockTicksCounter()
+{
+	clockTicks = clock() - clockTicks;
+}
+
+double PerformanceMetrics::calculateCpuTimeValue()
+{
+	FILETIME createTime;
+	FILETIME exitTime;
+	FILETIME kernelTime;
+	FILETIME userTime;
+	if (GetProcessTimes(GetCurrentProcess(), &createTime, &exitTime, &kernelTime, &userTime) != -1)
+	{
+		SYSTEMTIME userSystemTime;
+		if (FileTimeToSystemTime(&userTime, &userSystemTime) != -1)
+			return (double)userSystemTime.wHour * 3600.0 +
+			(double)userSystemTime.wMinute * 60.0 +
+			(double)userSystemTime.wSecond +
+			(double)userSystemTime.wMilliseconds / 1000.0;
+	}
+	return -1;
+}
+
+void PerformanceMetrics::startCpuTimeMeasure()
+{
+
+	cpuTimeValue = calculateCpuTimeValue();
+}
+
+void PerformanceMetrics::stopCpuTimeMeasure()
+{
+	cpuTimeValue = calculateCpuTimeValue() - cpuTimeValue;
+}
+
+void PerformanceMetrics::printInformation()
+{
+	fprintf(outputStream, "took:%lf", cpuTimeValue);
+}
+

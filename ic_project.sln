@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BruteForceDLL", "BruteForce
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HashingFunctionsDll", "HashingFunctionsDll\HashingFunctionsDll.vcxproj", "{299620C9-62E5-41D2-B7EB-C206B90BAD77}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerformanceMetricsDll", "PerformanceMetricsDll\PerformanceMetricsDll.vcxproj", "{9AFF136A-A50E-48C9-826C-A4661663B937}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Debug|Win32.Build.0 = Debug|Win32
 		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Release|Win32.ActiveCfg = Release|Win32
 		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Release|Win32.Build.0 = Release|Win32
+		{9AFF136A-A50E-48C9-826C-A4661663B937}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9AFF136A-A50E-48C9-826C-A4661663B937}.Debug|Win32.Build.0 = Debug|Win32
+		{9AFF136A-A50E-48C9-826C-A4661663B937}.Release|Win32.ActiveCfg = Release|Win32
+		{9AFF136A-A50E-48C9-826C-A4661663B937}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
