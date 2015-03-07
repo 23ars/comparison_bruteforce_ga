@@ -3,32 +3,62 @@
 #else
 #define PERFORMANCEMETRICSDLL_API __declspec(dllimport)
 #endif
-
+typedef enum
+{
+	CLOCK_TICKS = 0,
+	CPU_TIME = 1
+}PERFORMANCE_UNIT;
 
 class PERFORMANCEMETRICSDLL_API PerformanceMetrics {
 public:
-	inline PerformanceMetrics(FILE*outputStream)
+	inline PerformanceMetrics()
 	{
-		this->outputStream = outputStream;
+		
 	}
 	inline virtual ~PerformanceMetrics()
 	{
-		outputStream = stdout;
+		
 	}
-	void startClockTicksCounter();
-	void stopClockTicksCounter();
-	void printInformation();
+	virtual void start() = 0;
+	virtual void stop() = 0;
+	inline friend std::ostream& operator<<(std::ostream& out, const PerformanceMetrics& p)
+	{
+		out << "Metric not available!\n";
+	}
+protected:
 
-	void startCpuTimeMeasure();
-	void stopCpuTimeMeasure();
+private:
+	
+};
+class PERFORMANCEMETRICSDLL_API ClockTicksMetrics :public PerformanceMetrics
+{
+public:
+	inline ClockTicksMetrics() :PerformanceMetrics(){}
+
+	void start();
+	void stop();
+	
+	inline friend std::ostream& operator<<(std::ostream& out, const ClockTicksMetrics& p){
+		return out << "Clock ticks:" << p.clockTicks << "\n";
+	}
+protected:
+
+private:
+	clock_t clockTicks;
+};
+class PERFORMANCEMETRICSDLL_API CpuTimeMetrics :public PerformanceMetrics
+{
+public:
+	inline CpuTimeMetrics() :PerformanceMetrics(){}
+	void start();
+	void stop();
+
+	inline friend std::ostream& operator<<(std::ostream& out, const CpuTimeMetrics& p){
+		return out << "CPU time used:" << p.cpuTimeValue << "\n";
+	}
+protected:
+
 private:
 	double calculateCpuTimeValue();
-	FILE *outputStream;
-	clock_t clockTicks;
 	double cpuTimeValue;
-
 };
-
-
-
-

@@ -1,17 +1,17 @@
 #include "stdafx.h"
 #include "PerformanceMetricsDll.h"
 
-void PerformanceMetrics::startClockTicksCounter()
+void ClockTicksMetrics::start()
 {
 	clockTicks = clock();
 }
 
-void PerformanceMetrics::stopClockTicksCounter()
+void ClockTicksMetrics::stop()
 {
 	clockTicks = clock() - clockTicks;
 }
 
-double PerformanceMetrics::calculateCpuTimeValue()
+double CpuTimeMetrics::calculateCpuTimeValue()
 {
 	FILETIME createTime;
 	FILETIME exitTime;
@@ -29,19 +29,16 @@ double PerformanceMetrics::calculateCpuTimeValue()
 	return -1;
 }
 
-void PerformanceMetrics::startCpuTimeMeasure()
+void CpuTimeMetrics::start()
 {
 
 	cpuTimeValue = calculateCpuTimeValue();
 }
 
-void PerformanceMetrics::stopCpuTimeMeasure()
+void CpuTimeMetrics::stop()
 {
 	cpuTimeValue = calculateCpuTimeValue() - cpuTimeValue;
 }
 
-void PerformanceMetrics::printInformation()
-{
-	fprintf(outputStream, "took:%lf", cpuTimeValue);
-}
+
 

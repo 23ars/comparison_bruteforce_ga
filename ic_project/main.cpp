@@ -7,10 +7,12 @@
 
 int main(int argc, char **argv)
 {
-	PerformanceMetrics *pf = new PerformanceMetrics(stdout);
-	pf->startCpuTimeMeasure();
+	ClockTicksMetrics pf = ClockTicksMetrics();//new CpuTimeMetrics(stdout);
+
+	pf.start();
 	int i = 0;
 	for (int i = 0; i < 1000000; i++){
+		//std::cout << "TEST";
 		_asm{
 			NOP	;; doing a no operation to avoid optimization by the compiler.
 				;;operation made just for testing
@@ -18,8 +20,10 @@ int main(int argc, char **argv)
 		}
 		
 	}
-	pf->stopCpuTimeMeasure();
-	pf->printInformation();
+	
+	pf.stop();
+	std::cout << pf;
+	
 
 	std::string testingString = "testingString";//MUST DELETE
 	//BruteForce *bf = new BruteForce();
