@@ -21,7 +21,7 @@ public:
 		int GaNumberOfIterations;
 		double GaEliteRate;
 		double GaMutationRate;
-		std::string GaTarget;
+		std::string GaTarget;//will be the HASH
 	};
 	typedef std::vector<_GA_Genome> POPULATION;
 	
@@ -33,10 +33,27 @@ public:
 	}
 	void init(POPULATION &population, POPULATION &buffer,size_t targetSize);
 
+	void calculateFitness(POPULATION &population);
 
+	inline void sortByFitness(POPULATION &population)
+	{
+		
+		std::sort(population.begin(), population.end(), sortFitness);
+		
+	}
 
+	void mate(POPULATION &population, POPULATION &buffer);
 protected:
 private:
+	inline static bool sortFitness(_GA_Genome x, _GA_Genome y)
+	{
+		return (x.fitness < y.fitness);
+	}
+	
+	void elitism(POPULATION &population, POPULATION &buffer, size_t esize);
+
+	void mutate(_GA_Genome &member);
+
 	_GA_Properties *properties;
 	
 };
