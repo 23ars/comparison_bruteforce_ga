@@ -3,11 +3,7 @@
 #else
 #define PERFORMANCEMETRICSDLL_API __declspec(dllimport)
 #endif
-typedef enum
-{
-	CLOCK_TICKS = 0,
-	CPU_TIME = 1
-}PERFORMANCE_UNIT;
+
 
 class PERFORMANCEMETRICSDLL_API PerformanceMetrics {
 public:
