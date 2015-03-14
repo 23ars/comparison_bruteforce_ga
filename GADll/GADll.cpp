@@ -1,27 +1,29 @@
 #include "stdafx.h"
 #include "GADll.h"
 
-CGADll::CGADll(int populationSize, int numberOfIterations, double eliteRate, double mutationRate, std::string target)
+CGADll::CGADll(size_t populationSize, size_t numberOfIterations, double eliteRate, double mutationRate, std::string target)
 {
+	/*
 	if (MEMORY_ALLOC(properties, _GA_Properties*, sizeof(_GA_Properties)) == false)
 	{
 		std::cerr << "Could not allocate memory!\n";
 		exit(1);
-	}
+	}*/
+	properties = new _GA_Properties;
 	properties->GaPopulationSize = populationSize;
 	properties->GaNumberOfIterations = numberOfIterations;
 	properties->GaEliteRate = eliteRate;
 	properties->GaMutationRate = mutationRate;
 	properties->GaTarget = target;
 
-	srand(time(NULL));
+	
 
 }
 void CGADll::init(POPULATION &population, POPULATION &buffer,size_t targetSize)
 {
 	size_t indexI;
 	size_t indexJ;
-	for (indexI = 0; indexI < targetSize; ++indexI)
+	for (indexI = 0; indexI < properties->GaPopulationSize; ++indexI)
 	{
 		_GA_Genome citizen;
 		citizen.fitness = 0;
@@ -36,26 +38,26 @@ void CGADll::init(POPULATION &population, POPULATION &buffer,size_t targetSize)
 }
 
 
-void CGADll::calculateFitness(POPULATION &population)//will use a hash function that will come as parameter
+void CGADll::calculateFitness(POPULATION &population)//TODO:will use a hash function that will come as parameter
 {
 	std::string target = properties->GaTarget;
-	/*
-	int tsize = target.size();
+	
+	size_t targetSize = properties->GaTarget.size();
 	unsigned int fitness;
 
-	for (int i = 0; i<GA_POPSIZE; i++) {
+	for (size_t indexI = 0; indexI<properties->GaPopulationSize; indexI++) {
 		fitness = 0;
-		for (int j = 0; j<tsize; j++) {
-			fitness += abs(int(population[i].str[j] - target[j]));
+		for (size_t indexJ = 0; indexJ<targetSize; indexJ++) {
+			fitness += abs(int(population[indexI].str[indexJ] - target[indexJ]));
 		}
 
-		population[i].fitness = fitness;
+		population[indexI].fitness = fitness;
 	}
-	*/
+	
 }
 void CGADll::elitism(POPULATION &population, POPULATION &buffer, size_t esize)
 {
-	for (size_t index; index < esize; ++index)
+	for (size_t index=0; index < esize; ++index)
 	{
 		buffer[index].str = population[index].str;
 		buffer[index].fitness = population[index].fitness;
@@ -69,4 +71,23 @@ void CGADll::mutate(_GA_Genome &member)
 	unsigned int delta = (rand() % 90) + 32;
 
 	member.str[position] = ((member.str[position] + delta) % 122);
+}
+
+void CGADll::mate(POPULATION &population, POPULATION &buffer)
+{
+	int esize = (properties->GaPopulationSize)*(properties->GaEliteRate);
+	size_t targetSize = properties->GaTarget.size();
+	size_t spos, i1, i2;
+	elitism(population, buffer, esize);
+	for (size_t index = esize; index < properties->GaPopulationSize; index++)
+	{
+		i1 = rand() % (properties->GaPopulationSize / 2);
+		i2 = rand() % (properties->GaPopulationSize / 2);
+		spos = rand() % targetSize;
+		buffer[index].str = population[i1].str.substr(0, spos) + population[i2].str.substr(spos, esize - spos);
+		if (rand() < properties->GaMutationRate)
+		{
+			mutate(buffer[index]);
+		}
+	}
 }

@@ -17,19 +17,20 @@ public:
 	};
 	struct _GA_Properties
 	{
-		int GaPopulationSize;
-		int GaNumberOfIterations;
+		size_t GaPopulationSize;
+		size_t GaNumberOfIterations;
 		double GaEliteRate;
 		double GaMutationRate;
-		std::string GaTarget;//will be the HASH
+		std::string GaTarget;//TODO:will be the HASH
 	};
 	typedef std::vector<_GA_Genome> POPULATION;
 	
-	CGADll(int populationSize, int numberOfIterations, double eliteRate, double mutationRate, std::string target);
+	CGADll(size_t populationSize, size_t numberOfIterations, double eliteRate, double mutationRate, std::string target);
 	
 	inline virtual ~CGADll()
 	{
-		MEMORY_FREE(properties);
+		//MEMORY_FREE(properties);
+		delete properties;
 	}
 	void init(POPULATION &population, POPULATION &buffer,size_t targetSize);
 
@@ -43,6 +44,16 @@ public:
 	}
 
 	void mate(POPULATION &population, POPULATION &buffer);
+	inline friend std::ostream& operator<<(std::ostream& out, const POPULATION& p){
+		return out << "Best population:" << p[0].str.c_str() << " ( " << p[0].fitness << ")\n";
+	}
+
+	inline void swap(POPULATION *&population,POPULATION *&buffer)
+	{
+		POPULATION *temp = population; population = buffer; buffer = temp;
+	}
+
+
 protected:
 private:
 	inline static bool sortFitness(_GA_Genome x, _GA_Genome y)

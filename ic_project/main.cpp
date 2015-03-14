@@ -2,11 +2,15 @@
 #include "BruteForceDLL.h"
 #include <cstdio>
 #include <ctime>
+#include <vector>
+#include <algorithm>
+#include "GADll.h"
 #include "PerformanceMetricsDll.h"
 
 
 int main(int argc, char **argv)
 {
+	/*
 	ClockTicksMetrics pf = ClockTicksMetrics();//new CpuTimeMetrics(stdout);
 
 	pf.start();
@@ -24,12 +28,38 @@ int main(int argc, char **argv)
 	pf.stop();
 	std::cout << pf;
 	
-
-	std::string testingString = "testingString";//MUST DELETE
+	*/
+	
 	//BruteForce *bf = new BruteForce();
 	//bf->bruteForce(testingString);
 	
 	
 	//delete bf;
+	size_t populationSize = 3000;
+	size_t numberOfIterations = 20000;
+	double eliteRate = 0.05;
+	double mutationRate = 0.25;
+	std::string target = "te iubesc";
+	srand(unsigned(time(NULL)));
+	CGADll *geneticAlgo = new CGADll(populationSize, numberOfIterations, eliteRate, mutationRate, target);
+	
+	CGADll::POPULATION pop_alpha, pop_beta;
+	
+	CGADll::POPULATION *population, *buffer;
+	
+	geneticAlgo->init(pop_alpha, pop_beta,target.size());
+	population = &pop_alpha;
+	buffer = &pop_beta;
+	for (size_t i = 0; i < numberOfIterations; i++)
+	{
+		geneticAlgo->calculateFitness(*population);
+		geneticAlgo->sortByFitness(*population);
+		std::cout << *population;
+		if ((*population)[0].fitness == 0)
+			break;
+		geneticAlgo->mate(*population, *buffer);
+		geneticAlgo->swap(population, buffer);
+	}
+
 	return 0;
 }

@@ -25,7 +25,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -53,7 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\PerformanceMetricsDll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\BruteForceDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\GADll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\PerformanceMetricsDll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\BruteForceDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -70,6 +70,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\PerformanceMetricsDll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\GADll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\BruteForceDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,6 +85,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BruteForceDLL\BruteForceDLL.vcxproj">
       <Project>{019cffd5-b5e4-4274-a390-3326532568f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GADll\GADll.vcxproj">
+      <Project>{11c16e41-02b5-406c-a47a-3e984f97e40d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\PerformanceMetricsDll\PerformanceMetricsDll.vcxproj">
       <Project>{9aff136a-a50e-48c9-826c-a4661663b937}</Project>
