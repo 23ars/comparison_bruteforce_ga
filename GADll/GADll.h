@@ -3,9 +3,9 @@
 #else
 #define GADLL_API __declspec(dllimport)
 #endif
-#define MEMORY_ALLOC(variable,type,size)					(((variable=(type)malloc(size))==NULL)?false:true)
-#define MEMORY_REALLOC(variable,initial_variable,type,size)	(((variable=(type)realloc(initial_variable,size))==NULL)?false:true)
-#define MEMORY_FREE(variable)								(free((void*)variable))
+#define MEMORY_ALLOC(variable,type)					((variable)=new (std::nothrow)(type))
+
+#define MEMORY_FREE(variable)						(delete (variable))
 
 
 class GADLL_API CGADll {
@@ -29,8 +29,7 @@ public:
 	
 	inline virtual ~CGADll()
 	{
-		//MEMORY_FREE(properties);
-		delete properties;
+		MEMORY_FREE(properties);
 	}
 	void init(POPULATION &population, POPULATION &buffer,size_t targetSize);
 

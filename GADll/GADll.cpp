@@ -3,13 +3,8 @@
 
 CGADll::CGADll(size_t populationSize, size_t numberOfIterations, double eliteRate, double mutationRate, std::string target)
 {
-	/*
-	if (MEMORY_ALLOC(properties, _GA_Properties*, sizeof(_GA_Properties)) == false)
-	{
-		std::cerr << "Could not allocate memory!\n";
-		exit(1);
-	}*/
-	properties = new _GA_Properties;
+	
+	MEMORY_ALLOC(properties, _GA_Properties);
 	properties->GaPopulationSize = populationSize;
 	properties->GaNumberOfIterations = numberOfIterations;
 	properties->GaEliteRate = eliteRate;
