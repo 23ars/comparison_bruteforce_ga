@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ic_project", "ic_project\ic
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BruteForceDLL", "BruteForceDLL\BruteForceDLL.vcxproj", "{019CFFD5-B5E4-4274-A390-3326532568F9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HashingFunctionsDll", "HashingFunctionsDll\HashingFunctionsDll.vcxproj", "{299620C9-62E5-41D2-B7EB-C206B90BAD77}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerformanceMetricsDll", "PerformanceMetricsDll\PerformanceMetricsDll.vcxproj", "{9AFF136A-A50E-48C9-826C-A4661663B937}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GADll", "GADll\GADll.vcxproj", "{11C16E41-02B5-406C-A47A-3E984F97E40D}"
@@ -27,10 +25,6 @@ Global
 		{019CFFD5-B5E4-4274-A390-3326532568F9}.Debug|Win32.Build.0 = Debug|Win32
 		{019CFFD5-B5E4-4274-A390-3326532568F9}.Release|Win32.ActiveCfg = Release|Win32
 		{019CFFD5-B5E4-4274-A390-3326532568F9}.Release|Win32.Build.0 = Release|Win32
-		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Debug|Win32.ActiveCfg = Debug|Win32
-		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Debug|Win32.Build.0 = Debug|Win32
-		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Release|Win32.ActiveCfg = Release|Win32
-		{299620C9-62E5-41D2-B7EB-C206B90BAD77}.Release|Win32.Build.0 = Release|Win32
 		{9AFF136A-A50E-48C9-826C-A4661663B937}.Debug|Win32.ActiveCfg = Debug|Win32
 		{9AFF136A-A50E-48C9-826C-A4661663B937}.Debug|Win32.Build.0 = Debug|Win32
 		{9AFF136A-A50E-48C9-826C-A4661663B937}.Release|Win32.ActiveCfg = Release|Win32

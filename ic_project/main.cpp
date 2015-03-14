@@ -4,9 +4,11 @@
 #include <ctime>
 #include <vector>
 #include <algorithm>
+
 #include "GADll.h"
 #include "PerformanceMetricsDll.h"
 
+#include <cstdio>
 
 int main(int argc, char **argv)
 {
@@ -35,11 +37,12 @@ int main(int argc, char **argv)
 	
 	
 	//delete bf;
+
 	size_t populationSize = 3000;
 	size_t numberOfIterations = 20000;
 	double eliteRate = 0.05;
 	double mutationRate = 0.25;
-	std::string target = "te iubesc";
+	std::string target = "la dracu";
 	srand(unsigned(time(NULL)));
 	CGADll *geneticAlgo = new CGADll(populationSize, numberOfIterations, eliteRate, mutationRate, target);
 	
@@ -60,6 +63,7 @@ int main(int argc, char **argv)
 		geneticAlgo->mate(*population, *buffer);
 		geneticAlgo->swap(population, buffer);
 	}
-
+	delete geneticAlgo;
+	std::getchar();
 	return 0;
 }
