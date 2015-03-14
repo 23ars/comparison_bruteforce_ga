@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CGADll">
+    <Position X="0.5" Y="0.5" Width="9" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="CGADll::_GA_Genome" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>gadll.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="CGADll::_GA_Properties" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>gadll.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Typedef Name="CGADll::POPULATION" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>gadll.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AwIIAAAAEAAAAAAAQAAAAAAAAAAIAQIAAQAAAgAAAAA=</HashCode>
+      <FileName>gadll.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

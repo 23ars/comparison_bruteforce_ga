@@ -11,9 +11,9 @@
 #include <cstdio>
 #include "sha1.h"
 
-static void fitnessFunction(CGADll::POPULATION &population, size_t populationSize,std::string target)
+static void fitnessFunction(CGADll::POPULATION &population, size_t populationSize,std::string target,size_t size)
 {
-	size_t targetSize = target.size();
+	size_t targetSize = size;
 	unsigned int fitness;
 //	std::string hashedString;
 //	std::string	targetString = sha1(target);
@@ -40,7 +40,7 @@ void generateWithGA(std::string targetString)
 	double mutationRate = 0.25;
 	std::string target = targetString;
 	srand(unsigned(time(NULL)));
-	CGADll *geneticAlgo = new CGADll(populationSize, numberOfIterations, eliteRate, mutationRate, target);
+	CGADll *geneticAlgo = new CGADll(populationSize, numberOfIterations, eliteRate, mutationRate, target,target.size());
 
 	CGADll::POPULATION pop_alpha, pop_beta;
 

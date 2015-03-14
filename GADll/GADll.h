@@ -22,11 +22,12 @@ public:
 		double GaEliteRate;
 		double GaMutationRate;
 		std::string GaTarget;
+		size_t GaTargetSize;
 	};
 
 	typedef std::vector<_GA_Genome> POPULATION;
 	
-	CGADll(size_t populationSize, size_t numberOfIterations, double eliteRate, double mutationRate, std::string target);
+	CGADll(size_t populationSize, size_t numberOfIterations, double eliteRate, double mutationRate, std::string target,size_t targetSize);
 	
 	inline virtual ~CGADll()
 	{
@@ -34,9 +35,9 @@ public:
 	}
 	void init(POPULATION &population, POPULATION &buffer);
 
-	inline void calculateFitness(POPULATION &population, void(*fitnessFunction)(POPULATION &population, size_t populationSize, std::string target))
+	inline void calculateFitness(POPULATION &population, void(*fitnessFunction)(POPULATION &population, size_t populationSize, std::string target,size_t size))
 	{
-		fitnessFunction(population, properties->GaPopulationSize, properties->GaTarget);
+		fitnessFunction(population, properties->GaPopulationSize, properties->GaTarget,properties->GaTargetSize);
 	}
 	inline void sortByFitness(POPULATION &population)
 	{
