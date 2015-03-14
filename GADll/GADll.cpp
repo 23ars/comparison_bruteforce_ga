@@ -14,7 +14,7 @@ CGADll::CGADll(size_t populationSize, size_t numberOfIterations, double eliteRat
 	
 
 }
-void CGADll::init(POPULATION &population, POPULATION &buffer,size_t targetSize)
+void CGADll::init(POPULATION &population, POPULATION &buffer)
 {
 	size_t indexI;
 	size_t indexJ;
@@ -23,7 +23,7 @@ void CGADll::init(POPULATION &population, POPULATION &buffer,size_t targetSize)
 		_GA_Genome citizen;
 		citizen.fitness = 0;
 		citizen.str.erase();
-		for (indexJ = 0; indexJ < targetSize; ++indexJ)
+		for (indexJ = 0; indexJ < properties->GaTarget.size(); ++indexJ)
 		{
 			citizen.str += (rand() % 90) + 32;
 		}
@@ -33,23 +33,6 @@ void CGADll::init(POPULATION &population, POPULATION &buffer,size_t targetSize)
 }
 
 
-void CGADll::calculateFitness(POPULATION &population)//TODO:will use a hash function that will come as parameter
-{
-	std::string target = properties->GaTarget;
-	
-	size_t targetSize = properties->GaTarget.size();
-	unsigned int fitness;
-
-	for (size_t indexI = 0; indexI<properties->GaPopulationSize; indexI++) {
-		fitness = 0;
-		for (size_t indexJ = 0; indexJ<targetSize; indexJ++) {
-			fitness += abs(int(population[indexI].str[indexJ] - target[indexJ]));
-		}
-
-		population[indexI].fitness = fitness;
-	}
-	
-}
 void CGADll::elitism(POPULATION &population, POPULATION &buffer, size_t esize)
 {
 	for (size_t index=0; index < esize; ++index)

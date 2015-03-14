@@ -53,7 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\GADll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\PerformanceMetricsDll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\BruteForceDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\HashGenerator;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\GADll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\PerformanceMetricsDll;C:\Users\Mihai\Documents\Visual Studio 2013\Projects\ic_project\BruteForceDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,9 +80,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BruteForceDLL\BruteForceDLL.vcxproj">
       <Project>{019cffd5-b5e4-4274-a390-3326532568f9}</Project>
     </ProjectReference>
@@ -95,6 +92,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="sha1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sha1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
