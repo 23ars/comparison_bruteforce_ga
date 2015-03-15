@@ -46,6 +46,9 @@ void generateWithGA(std::string targetString)
 
 	CGADll::POPULATION *population, *buffer;
 
+	ClockTicksMetrics performance = ClockTicksMetrics();
+	performance.start();
+
 	geneticAlgo->init(pop_alpha, pop_beta);
 	population = &pop_alpha;
 	buffer = &pop_beta;
@@ -59,22 +62,29 @@ void generateWithGA(std::string targetString)
 		geneticAlgo->mate(*population, *buffer);
 		geneticAlgo->swap(population, buffer);
 	}
+	performance.stop();
+	std::cout <<"With GA"<< performance;
 	delete geneticAlgo;
 
 }
 
+void generateWithBruteForce(std::string target)
+{
+	ClockTicksMetrics performance = ClockTicksMetrics();
+	performance.start();
+	BruteForce *bf = new BruteForce();
+	bf->bruteForce(target);
+	performance.stop();
+	std::cout << "With BruteForce" << performance ;
+	delete bf;
+}
 
 int main(int argc, char **argv)
 {
-	//generateWithGA("TEST");
-	PerformanceMetrics *performance = new ClockTicksMetrics();
-	performance->start();
-	BruteForce *bf = new BruteForce();
-	bf->bruteForce("ana");
-	performance->stop();
-	std::cout << ((ClockTicksMetrics*)performance);
-	delete bf;
-	delete performance;
+	std::string target = "testing";
+	generateWithGA(target);
+	generateWithBruteForce(target);
+	
 	std::getchar();
 	return 0;
 }

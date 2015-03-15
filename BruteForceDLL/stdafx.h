@@ -17,3 +17,4 @@
 #include <string>
 #include <atomic>
 #include <ppl.h>
+#include <exception>

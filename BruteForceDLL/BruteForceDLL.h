@@ -20,7 +20,7 @@ public:
 
 private:
 	
-	static void recurse(int threadNo, bool found, std::string targetString , std::string availableCharacters, int width, int position, std::string baseString);
+	static void recurse(int threadNo, std::string targetString , std::string availableCharacters, int width, int position, std::string baseString);
 	const std::string availableCharacters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789_-";
 	
 };
