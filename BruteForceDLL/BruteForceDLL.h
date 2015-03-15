@@ -8,12 +8,19 @@
 class BRUTEFORCEDLL_API BruteForce
 {
 public:
-	BruteForce();
-	virtual ~BruteForce();
-	void bruteForce(std::string generateString);
+	inline BruteForce()
+	{
+		
+	}
+	inline virtual ~BruteForce()
+	{
+
+	}
+	void bruteForce(std::string targetString);
 
 private:
-	static void recurse(int threadNo,std::string availableCharacters, int width, int position, std::string baseString);
+	
+	static void recurse(int threadNo, bool found, std::string targetString , std::string availableCharacters, int width, int position, std::string baseString);
 	const std::string availableCharacters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789_-";
 	
 };

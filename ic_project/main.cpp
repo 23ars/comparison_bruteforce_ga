@@ -66,8 +66,15 @@ void generateWithGA(std::string targetString)
 
 int main(int argc, char **argv)
 {
-	generateWithGA("TEST");
-	
+	//generateWithGA("TEST");
+	PerformanceMetrics *performance = new ClockTicksMetrics();
+	performance->start();
+	BruteForce *bf = new BruteForce();
+	bf->bruteForce("ana");
+	performance->stop();
+	std::cout << ((ClockTicksMetrics*)performance);
+	delete bf;
+	delete performance;
 	std::getchar();
 	return 0;
 }
