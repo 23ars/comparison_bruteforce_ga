@@ -81,7 +81,7 @@ void generateWithBruteForce(std::string target)
 
 int main(int argc, char **argv)
 {
-	std::string target = "testing";
+	std::string target = "sex";
 	generateWithGA(target);
 	generateWithBruteForce(target);
 	
