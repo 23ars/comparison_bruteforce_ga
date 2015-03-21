@@ -377,7 +377,7 @@ namespace GUI {
 		textBox2->Text = "";
 		if (this->radioButton1->Checked==true)
 			generateWithBruteForce(this->textBox2,ClockTicksMetrics());
-		else
+		else if (this->radioButton2->Checked==true)
 			generateWithBruteForce(this->textBox2, CpuTimeMetrics());
 		this->button1->Enabled = true;
 		this->button2->Enabled = false;
@@ -401,7 +401,7 @@ namespace GUI {
 		textBox8->Text = "";
 		if (this->radioButton1->Checked==true)
 			generateWithGA(this->textBox8,ClockTicksMetrics());
-		else
+		else if (this->radioButton2->Checked == true)
 			generateWithGA(this->textBox8,CpuTimeMetrics());
 		this->button3->Enabled = true;
 		this->button4->Enabled = false;
