@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerformanceMetricsDll", "Pe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GADll", "GADll\GADll.vcxproj", "{11C16E41-02B5-406C-A47A-3E984F97E40D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcxproj", "{7898BC39-8737-4C43-B4B6-69B40F8AFA77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{11C16E41-02B5-406C-A47A-3E984F97E40D}.Debug|Win32.Build.0 = Debug|Win32
 		{11C16E41-02B5-406C-A47A-3E984F97E40D}.Release|Win32.ActiveCfg = Release|Win32
 		{11C16E41-02B5-406C-A47A-3E984F97E40D}.Release|Win32.Build.0 = Release|Win32
+		{7898BC39-8737-4C43-B4B6-69B40F8AFA77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7898BC39-8737-4C43-B4B6-69B40F8AFA77}.Debug|Win32.Build.0 = Debug|Win32
+		{7898BC39-8737-4C43-B4B6-69B40F8AFA77}.Release|Win32.ActiveCfg = Release|Win32
+		{7898BC39-8737-4C43-B4B6-69B40F8AFA77}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
