@@ -4,7 +4,7 @@
 #include <ctime>
 #include <vector>
 #include <algorithm>
-
+#include <string>
 #include "GADll.h"
 #include "PerformanceMetricsDll.h"
 
@@ -17,14 +17,19 @@ std::string bruteforceTargetString;
 std::string gaTargetString;
 
 
+
 static void fitnessFunction(CGADll::POPULATION &population, size_t populationSize, std::string target, size_t size);
-void generateWithGA();
-void generateWithBruteForce();
+void generateWithGA(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance);
+void generateWithGA(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics performance);
+void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics whatPerformance);
+void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance);
+
+
 
 #include "MyForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
-
+//using namespace System::Threading;
 
 void Main(array<String^>^args)
 {
@@ -58,10 +63,9 @@ static void fitnessFunction(CGADll::POPULATION &population, size_t populationSiz
 }
 
 
-void generateWithGA()
+void generateWithGA(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance)
 {
 
-	
 	srand(unsigned(time(NULL)));
 	CGADll *geneticAlgo = new CGADll(populationSize, numberOfIterations, eliteRate, mutationRate, gaTargetString, gaTargetString.size());
 
@@ -69,36 +73,87 @@ void generateWithGA()
 
 	CGADll::POPULATION *population, *buffer;
 
-	ClockTicksMetrics performance = ClockTicksMetrics();
+	
 	performance.start();
 
 	geneticAlgo->init(pop_alpha, pop_beta);
 	population = &pop_alpha;
 	buffer = &pop_beta;
+	
 	for (size_t i = 0; i < numberOfIterations; i++)
 	{
 		geneticAlgo->calculateFitness(*population, fitnessFunction);
 		geneticAlgo->sortByFitness(*population);
-		std::cout << *population;
+		
+		textBox->Text += gcnew String(geneticAlgo->printResult(*population).c_str()) +"\r\n";
 		if ((*population)[0].fitness == 0)
 			break;
 		geneticAlgo->mate(*population, *buffer);
 		geneticAlgo->swap(population, buffer);
 	}
 	performance.stop();
-	std::cout << "With GA" << performance;
+	textBox->Text += gcnew String(performance.printResult().c_str());
+	delete geneticAlgo;
+
+}
+
+void generateWithGA(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics performance)
+{
+
+	srand(unsigned(time(NULL)));
+	CGADll *geneticAlgo = new CGADll(populationSize, numberOfIterations, eliteRate, mutationRate, gaTargetString, gaTargetString.size());
+
+	CGADll::POPULATION pop_alpha, pop_beta;
+
+	CGADll::POPULATION *population, *buffer;
+
+
+	performance.start();
+
+	geneticAlgo->init(pop_alpha, pop_beta);
+	population = &pop_alpha;
+	buffer = &pop_beta;
+
+	for (size_t i = 0; i < numberOfIterations; i++)
+	{
+		geneticAlgo->calculateFitness(*population, fitnessFunction);
+		geneticAlgo->sortByFitness(*population);
+
+		textBox->Text += gcnew String(geneticAlgo->printResult(*population).c_str()) +"\r\n";
+		if ((*population)[0].fitness == 0)
+			break;
+		geneticAlgo->mate(*population, *buffer);
+		geneticAlgo->swap(population, buffer);
+	}
+	performance.stop();
+	textBox->Text += gcnew String(performance.printResult().c_str());
 	delete geneticAlgo;
 
 }
 
 
-void generateWithBruteForce()
+void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance)
 {
-	ClockTicksMetrics performance = ClockTicksMetrics();
+
+	
 	performance.start();
 	BruteForce *bf = new BruteForce();
 	bf->bruteForce(bruteforceTargetString);
+	textBox->Text += "String is:" + gcnew String(bf->getGeneratedString().c_str())+"\r\n";
 	performance.stop();
-	std::cout << "With BruteForce" << performance;
+	textBox->Text += gcnew String(performance.printResult().c_str());
+	delete bf;
+}
+
+void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics performance)
+{
+
+
+	performance.start();
+	BruteForce *bf = new BruteForce();
+	bf->bruteForce(bruteforceTargetString);
+	textBox->Text += "String is:" + gcnew String(bf->getGeneratedString().c_str()) + "\r\n";
+	performance.stop();
+	textBox->Text += gcnew String(performance.printResult().c_str());
 	delete bf;
 }

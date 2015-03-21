@@ -21,6 +21,10 @@ public:
 	{
 		out << "Metric not available!\n";
 	}
+	inline std::string printResult()
+	{
+		return "";
+	}
 protected:
 
 private:
@@ -37,6 +41,12 @@ public:
 	inline friend std::ostream& operator<<(std::ostream& out, const ClockTicksMetrics& p){
 		return out << "Clock ticks:" << p.clockTicks << "\n";
 	}
+	inline std::string printResult()
+	{
+
+		return "Clock ticks:" + std::to_string(clockTicks) +"\n";
+
+	}
 protected:
 
 private:
@@ -51,6 +61,12 @@ public:
 
 	inline friend std::ostream& operator<<(std::ostream& out, const CpuTimeMetrics& p){
 		return out << "CPU time used:" << p.cpuTimeValue << "\n";
+	}
+	inline std::string printResult()
+	{
+
+		return "CPU time used:" + std::to_string(cpuTimeValue) + "\n";
+
 	}
 protected:
 

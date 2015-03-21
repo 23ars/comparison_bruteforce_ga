@@ -50,6 +50,12 @@ public:
 	inline friend std::ostream& operator<<(std::ostream& out, const POPULATION& p){
 		return out << "Best population:" << p[0].str.c_str() << " ( " << p[0].fitness << ")\n";
 	}
+	inline std::string printResult(POPULATION &population)
+	{
+		
+		return "Best population: " + population[0].str + " ( " + std::to_string(population[0].fitness) + ")\n";
+	
+	}
 
 	inline void swap(POPULATION *&population,POPULATION *&buffer)
 	{

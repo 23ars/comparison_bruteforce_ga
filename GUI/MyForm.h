@@ -52,6 +52,8 @@ namespace GUI {
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::TextBox^  textBox8;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
+	private: System::Windows::Forms::RadioButton^  radioButton1;
+	private: System::Windows::Forms::RadioButton^  radioButton2;
 	protected:
 
 	protected:
@@ -87,6 +89,8 @@ namespace GUI {
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->tableLayoutPanel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -102,12 +106,15 @@ namespace GUI {
 				50)));
 			this->tableLayoutPanel1->Controls->Add(this->groupBox1, 0, 0);
 			this->tableLayoutPanel1->Controls->Add(this->groupBox2, 1, 0);
+			this->tableLayoutPanel1->Controls->Add(this->radioButton1, 0, 1);
+			this->tableLayoutPanel1->Controls->Add(this->radioButton2, 1, 1);
 			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 1;
+			this->tableLayoutPanel1->RowCount = 2;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(458, 327);
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 29)));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(481, 339);
 			this->tableLayoutPanel1->TabIndex = 0;
 			// 
 			// groupBox1
@@ -121,7 +128,7 @@ namespace GUI {
 			this->groupBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->groupBox1->Location = System::Drawing::Point(3, 3);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(223, 321);
+			this->groupBox1->Size = System::Drawing::Size(234, 304);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"BruteForceMethod";
@@ -136,7 +143,7 @@ namespace GUI {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->ReadOnly = true;
 			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->textBox2->Size = System::Drawing::Size(207, 185);
+			this->textBox2->Size = System::Drawing::Size(218, 168);
 			this->textBox2->TabIndex = 4;
 			// 
 			// button2
@@ -188,7 +195,7 @@ namespace GUI {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->textBox1->Location = System::Drawing::Point(117, 36);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
+			this->textBox1->Size = System::Drawing::Size(111, 20);
 			this->textBox1->TabIndex = 0;
 			// 
 			// groupBox2
@@ -204,9 +211,9 @@ namespace GUI {
 			this->groupBox2->Controls->Add(this->textBox3);
 			this->groupBox2->Controls->Add(this->label2);
 			this->groupBox2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->groupBox2->Location = System::Drawing::Point(232, 3);
+			this->groupBox2->Location = System::Drawing::Point(243, 3);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(223, 321);
+			this->groupBox2->Size = System::Drawing::Size(235, 304);
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"GeneticAlgorithmMethod";
@@ -221,7 +228,7 @@ namespace GUI {
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->ReadOnly = true;
 			this->textBox8->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->textBox8->Size = System::Drawing::Size(204, 155);
+			this->textBox8->Size = System::Drawing::Size(216, 138);
 			this->textBox8->TabIndex = 8;
 			// 
 			// button4
@@ -258,7 +265,7 @@ namespace GUI {
 			// 
 			this->textBox7->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox7->Location = System::Drawing::Point(117, 95);
+			this->textBox7->Location = System::Drawing::Point(129, 95);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->Size = System::Drawing::Size(100, 20);
 			this->textBox7->TabIndex = 5;
@@ -268,7 +275,7 @@ namespace GUI {
 			// 
 			this->textBox6->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox6->Location = System::Drawing::Point(117, 69);
+			this->textBox6->Location = System::Drawing::Point(129, 69);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(100, 20);
 			this->textBox6->TabIndex = 4;
@@ -301,7 +308,7 @@ namespace GUI {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->textBox3->Location = System::Drawing::Point(117, 36);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(100, 20);
+			this->textBox3->Size = System::Drawing::Size(112, 20);
 			this->textBox3->TabIndex = 1;
 			// 
 			// label2
@@ -316,14 +323,43 @@ namespace GUI {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Target String:";
 			// 
+			// radioButton1
+			// 
+			this->radioButton1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->Location = System::Drawing::Point(3, 313);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(234, 23);
+			this->radioButton1->TabIndex = 1;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->Text = L"Clock Ticks";
+			this->radioButton1->UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			this->radioButton2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->Location = System::Drawing::Point(243, 313);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(235, 23);
+			this->radioButton2->TabIndex = 2;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->Text = L"CPU Time";
+			this->radioButton2->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
-			this->ClientSize = System::Drawing::Size(458, 327);
+			this->ClientSize = System::Drawing::Size(481, 339);
 			this->Controls->Add(this->tableLayoutPanel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"MyForm";
 			this->Text = L"Comparison between BruteForce and GA";
 			this->tableLayoutPanel1->ResumeLayout(false);
+			this->tableLayoutPanel1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -332,12 +368,20 @@ namespace GUI {
 
 		}
 #pragma endregion
-
+		
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->textBox2->Text += "test";//start bruteforce
+		
 		this->button1->Enabled = false;
 		this->button2->Enabled = true;
-		bruteforceTargetString = msclr::interop::marshal_as< std::string >(textBox1->Text);
+		bruteforceTargetString = msclr::interop::marshal_as<std::string>(textBox1->Text);
+		textBox2->Text = "";
+		if (this->radioButton1->Checked==true)
+			generateWithBruteForce(this->textBox2,ClockTicksMetrics());
+		else
+			generateWithBruteForce(this->textBox2, CpuTimeMetrics());
+		this->button1->Enabled = true;
+		this->button2->Enabled = false;
+		
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->button1->Enabled = true;//stop bruteforce
@@ -354,6 +398,13 @@ namespace GUI {
 		eliteRate = Convert::ToDouble(textBox6->Text);
 		mutationRate = Convert::ToDouble(textBox7->Text);
 		gaTargetString = msclr::interop::marshal_as<std::string>(textBox3->Text);
+		textBox8->Text = "";
+		if (this->radioButton1->Checked==true)
+			generateWithGA(this->textBox8,ClockTicksMetrics());
+		else
+			generateWithGA(this->textBox8,CpuTimeMetrics());
+		this->button3->Enabled = true;
+		this->button4->Enabled = false;
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->button3->Enabled = true;//stop GA

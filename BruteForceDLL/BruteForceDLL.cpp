@@ -9,13 +9,14 @@ void BruteForce::bruteForce(std::string targetString)
 	BruteForceParallelisation *parallelBruteforce = new BruteForceParallelisation();
 	size_t maxChars = availableCharacters.length();
 	for (int i = 0; i < maxChars; i++) {
-		std::cout << "Checking with  [" << i << "]..." << std::endl;
+		//std::cout << "Checking with  [" << i << "]..." << std::endl;
 		try
 		{
 			parallelBruteforce->executeTaskInParallel(targetString,availableCharacters, i, 0, "", this->recurse);
 		}
-		catch (QuitNow)
+		catch (QuitNow e)
 		{ 
+			generatedString = e.what();
 			goto end;
 		}
 	}
@@ -40,8 +41,9 @@ void BruteForce::recurse(int threadNo, std::string targetString, std::string ava
 		if (targetString.compare(baseString) == 0)
 		{
 			isWordFound = false;
-			std::cout << "String is:" << baseString.c_str();
-			throw QuitNow();//TODO:Know that I should not use the exceptions mecanism for stopping recursion
+			//std::cout << "String is:" << baseString.c_str();
+			
+			throw QuitNow(baseString);//TODO:Know that I should not use the exceptions mecanism for stopping recursion
 		}
 	}
 

@@ -16,6 +16,7 @@
 #include <time.h>
 #include <algorithm>
 #include <new>
+#include <string>
 
 
 

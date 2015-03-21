@@ -11,7 +11,7 @@
 // Windows Header Files:
 #include <windows.h>
 
-
+#include <string>
 #include <ctime>
 #include <iostream>
 #include <ostream>
