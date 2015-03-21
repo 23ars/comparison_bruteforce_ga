@@ -18,6 +18,7 @@ std::string gaTargetString;
 
 
 
+
 static void fitnessFunction(CGADll::POPULATION &population, size_t populationSize, std::string target, size_t size);
 void generateWithGA(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance);
 void generateWithGA(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics performance);
@@ -29,8 +30,8 @@ void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, CpuTimeMe
 #include "MyForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
-//using namespace System::Threading;
-
+using namespace System::Threading;
+[STAThreadAttribute]
 void Main(array<String^>^args)
 {
 	Application::EnableVisualStyles();
@@ -47,11 +48,11 @@ static void fitnessFunction(CGADll::POPULATION &population, size_t populationSiz
 	unsigned int fitness;
 	//	std::string hashedString;
 	//	std::string	targetString = sha1(target);
-	for (size_t indexI = 0; indexI<populationSize; indexI++)
+	for (size_t indexI = 0; indexI < populationSize; indexI++)
 	{
 		//hashedString = sha1(population[indexI].str);
 		fitness = 0;
-		for (size_t indexJ = 0; indexJ<targetSize; indexJ++)
+		for (size_t indexJ = 0; indexJ < targetSize; indexJ++)
 		{
 
 			fitness += abs(int(population[indexI].str[indexJ] - target[indexJ]));
@@ -73,19 +74,19 @@ void generateWithGA(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics pe
 
 	CGADll::POPULATION *population, *buffer;
 
-	
+
 	performance.start();
 
 	geneticAlgo->init(pop_alpha, pop_beta);
 	population = &pop_alpha;
 	buffer = &pop_beta;
-	
+
 	for (size_t i = 0; i < numberOfIterations; i++)
 	{
 		geneticAlgo->calculateFitness(*population, fitnessFunction);
 		geneticAlgo->sortByFitness(*population);
-		
-		textBox->Text += gcnew String(geneticAlgo->printResult(*population).c_str()) +"\r\n";
+
+		textBox->Text += gcnew String(geneticAlgo->printResult(*population).c_str()) + "\r\n";
 		if ((*population)[0].fitness == 0)
 			break;
 		geneticAlgo->mate(*population, *buffer);
@@ -119,7 +120,7 @@ void generateWithGA(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics
 		geneticAlgo->calculateFitness(*population, fitnessFunction);
 		geneticAlgo->sortByFitness(*population);
 
-		textBox->Text += gcnew String(geneticAlgo->printResult(*population).c_str()) +"\r\n";
+		textBox->Text += gcnew String(geneticAlgo->printResult(*population).c_str()) + "\r\n";
 		if ((*population)[0].fitness == 0)
 			break;
 		geneticAlgo->mate(*population, *buffer);
@@ -135,11 +136,11 @@ void generateWithGA(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics
 void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance)
 {
 
-	
+
 	performance.start();
 	BruteForce *bf = new BruteForce();
 	bf->bruteForce(bruteforceTargetString);
-	textBox->Text += "String is:" + gcnew String(bf->getGeneratedString().c_str())+"\r\n";
+	textBox->Text += "String is:" + gcnew String(bf->getGeneratedString().c_str()) + "\r\n";
 	performance.stop();
 	textBox->Text += gcnew String(performance.printResult().c_str());
 	delete bf;

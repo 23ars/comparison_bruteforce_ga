@@ -21,6 +21,7 @@ namespace GUI {
 			//
 			//TODO: Add the constructor code here
 			//
+			
 		}
 
 	protected:
@@ -40,7 +41,7 @@ namespace GUI {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::TextBox^  textBox2;
-	private: System::Windows::Forms::Button^  button2;
+
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::TextBox^  textBox7;
@@ -49,11 +50,13 @@ namespace GUI {
 	private: System::Windows::Forms::TextBox^  textBox4;
 	private: System::Windows::Forms::TextBox^  textBox3;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Button^  button4;
+
 	private: System::Windows::Forms::TextBox^  textBox8;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::RadioButton^  radioButton2;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Button^  button4;
 	protected:
 
 	protected:
@@ -74,13 +77,11 @@ namespace GUI {
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
@@ -88,9 +89,11 @@ namespace GUI {
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->tableLayoutPanel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -145,21 +148,6 @@ namespace GUI {
 			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Both;
 			this->textBox2->Size = System::Drawing::Size(218, 168);
 			this->textBox2->TabIndex = 4;
-			// 
-			// button2
-			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->button2->AutoSize = true;
-			this->button2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->button2->Location = System::Drawing::Point(95, 80);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(39, 23);
-			this->button2->TabIndex = 3;
-			this->button2->Text = L"Stop";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// button1
 			// 
@@ -230,21 +218,6 @@ namespace GUI {
 			this->textBox8->ScrollBars = System::Windows::Forms::ScrollBars::Both;
 			this->textBox8->Size = System::Drawing::Size(216, 138);
 			this->textBox8->TabIndex = 8;
-			// 
-			// button4
-			// 
-			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->button4->AutoSize = true;
-			this->button4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->button4->Location = System::Drawing::Point(117, 126);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(39, 23);
-			this->button4->TabIndex = 7;
-			this->button4->Text = L"Stop";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button3
 			// 
@@ -351,6 +324,36 @@ namespace GUI {
 			this->radioButton2->Text = L"CPU Time";
 			this->radioButton2->UseVisualStyleBackColor = true;
 			// 
+			// button4
+			// 
+			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button4->AutoSize = true;
+			this->button4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->button4->Location = System::Drawing::Point(117, 126);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(39, 23);
+			this->button4->TabIndex = 7;
+			this->button4->Text = L"Stop";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			// 
+			// button2
+			// 
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button2->AutoSize = true;
+			this->button2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->button2->Location = System::Drawing::Point(95, 80);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(39, 23);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"Stop";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
 			// MyForm
 			// 
 			this->ClientSize = System::Drawing::Size(481, 339);
@@ -375,12 +378,15 @@ namespace GUI {
 		this->button2->Enabled = true;
 		bruteforceTargetString = msclr::interop::marshal_as<std::string>(textBox1->Text);
 		textBox2->Text = "";
+
 		if (this->radioButton1->Checked==true)
 			generateWithBruteForce(this->textBox2,ClockTicksMetrics());
 		else if (this->radioButton2->Checked==true)
 			generateWithBruteForce(this->textBox2, CpuTimeMetrics());
 		this->button1->Enabled = true;
 		this->button2->Enabled = false;
+		
+		
 		
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -399,6 +405,7 @@ namespace GUI {
 		mutationRate = Convert::ToDouble(textBox7->Text);
 		gaTargetString = msclr::interop::marshal_as<std::string>(textBox3->Text);
 		textBox8->Text = "";
+		
 		if (this->radioButton1->Checked==true)
 			generateWithGA(this->textBox8,ClockTicksMetrics());
 		else if (this->radioButton2->Checked == true)
