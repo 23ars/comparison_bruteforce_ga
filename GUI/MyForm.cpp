@@ -9,6 +9,7 @@
 #include "PerformanceMetricsDll.h"
 
 #include <cstdio>
+
 size_t populationSize;
 size_t numberOfIterations;
 double eliteRate;
@@ -25,12 +26,15 @@ void generateWithGA(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics
 void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, ClockTicksMetrics whatPerformance);
 void generateWithBruteForce(System::Windows::Forms::TextBox^  textBox, CpuTimeMetrics performance);
 
-
+#include "ThreadWork.h"
 
 #include "MyForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Threading;
+
+
+
 [STAThreadAttribute]
 void Main(array<String^>^args)
 {
@@ -40,7 +44,6 @@ void Main(array<String^>^args)
 	Application::Run(%form);
 
 }
-
 
 static void fitnessFunction(CGADll::POPULATION &population, size_t populationSize, std::string target, size_t size)
 {

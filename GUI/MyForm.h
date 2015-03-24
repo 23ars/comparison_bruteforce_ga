@@ -21,7 +21,7 @@ namespace GUI {
 			//
 			//TODO: Add the constructor code here
 			//
-			
+
 		}
 
 	protected:
@@ -371,23 +371,31 @@ namespace GUI {
 
 		}
 #pragma endregion
-		
+
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		
+
 		this->button1->Enabled = false;
 		this->button2->Enabled = true;
 		bruteforceTargetString = msclr::interop::marshal_as<std::string>(textBox1->Text);
 		textBox2->Text = "";
+		ThreadWork^ somework = gcnew ThreadWork();
+		System::Threading::Thread^ newThread = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(somework, &ThreadWork::work));
 
-		if (this->radioButton1->Checked==true)
-			generateWithBruteForce(this->textBox2,ClockTicksMetrics());
-		else if (this->radioButton2->Checked==true)
+
+		newThread->Start();
+		newThread->Join();
+
+		this->textBox2->Text = somework->getText();
+		/*
+		if (this->radioButton1->Checked == true)
+			generateWithBruteForce(this->textBox2, ClockTicksMetrics());
+		else if (this->radioButton2->Checked == true)
 			generateWithBruteForce(this->textBox2, CpuTimeMetrics());
 		this->button1->Enabled = true;
 		this->button2->Enabled = false;
-		
-		
-		
+
+		*/
+
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->button1->Enabled = true;//stop bruteforce
@@ -405,11 +413,11 @@ namespace GUI {
 		mutationRate = Convert::ToDouble(textBox7->Text);
 		gaTargetString = msclr::interop::marshal_as<std::string>(textBox3->Text);
 		textBox8->Text = "";
-		
-		if (this->radioButton1->Checked==true)
-			generateWithGA(this->textBox8,ClockTicksMetrics());
+
+		if (this->radioButton1->Checked == true)
+			generateWithGA(this->textBox8, ClockTicksMetrics());
 		else if (this->radioButton2->Checked == true)
-			generateWithGA(this->textBox8,CpuTimeMetrics());
+			generateWithGA(this->textBox8, CpuTimeMetrics());
 		this->button3->Enabled = true;
 		this->button4->Enabled = false;
 	}
