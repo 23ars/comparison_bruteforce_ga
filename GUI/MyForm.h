@@ -66,6 +66,8 @@ namespace GUI {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		System::Threading::Thread ^bruteForceWorker;
+		System::Threading::Thread ^gaWorker;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -378,23 +380,25 @@ namespace GUI {
 		this->button2->Enabled = true;
 		bruteforceTargetString = msclr::interop::marshal_as<std::string>(textBox1->Text);
 		textBox2->Text = "";
-		ThreadWork^ somework = gcnew ThreadWork();
-		System::Threading::Thread^ newThread = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(somework, &ThreadWork::work));
-
-
-		newThread->Start();
-		newThread->Join();
-
-		this->textBox2->Text = somework->getText();
 		/*
+		ThreadWork^ worker = gcnew ThreadWork();
+		System::Threading::Thread^ bruteForceWorker = gcnew System::Threading::Thread(gcnew System::Threading::ParameterizedThreadStart(worker, &ThreadWork::bruteforceWork));
+		this->textBox2->Text = worker->getText();
+		*/
+
+		bruteForceWorker->Start(textBox1->Text);
+		bruteForceWorker->Join();
+
+		
 		if (this->radioButton1->Checked == true)
 			generateWithBruteForce(this->textBox2, ClockTicksMetrics());
 		else if (this->radioButton2->Checked == true)
 			generateWithBruteForce(this->textBox2, CpuTimeMetrics());
+
 		this->button1->Enabled = true;
 		this->button2->Enabled = false;
 
-		*/
+		
 
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
