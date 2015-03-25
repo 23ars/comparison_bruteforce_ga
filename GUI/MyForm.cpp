@@ -49,11 +49,10 @@ static void fitnessFunction(CGADll::POPULATION &population, size_t populationSiz
 {
 	size_t targetSize = size;
 	unsigned int fitness;
-	//	std::string hashedString;
-	//	std::string	targetString = sha1(target);
+
 	for (size_t indexI = 0; indexI < populationSize; indexI++)
 	{
-		//hashedString = sha1(population[indexI].str);
+		
 		fitness = 0;
 		for (size_t indexJ = 0; indexJ < targetSize; indexJ++)
 		{

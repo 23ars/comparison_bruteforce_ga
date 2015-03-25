@@ -55,8 +55,8 @@ namespace GUI {
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::RadioButton^  radioButton2;
-	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button4;
+
+
 	protected:
 
 	protected:
@@ -94,8 +94,6 @@ namespace GUI {
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->tableLayoutPanel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -126,7 +124,6 @@ namespace GUI {
 			// 
 			this->groupBox1->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->groupBox1->Controls->Add(this->textBox2);
-			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->textBox1);
@@ -192,7 +189,6 @@ namespace GUI {
 			// 
 			this->groupBox2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->groupBox2->Controls->Add(this->textBox8);
-			this->groupBox2->Controls->Add(this->button4);
 			this->groupBox2->Controls->Add(this->button3);
 			this->groupBox2->Controls->Add(this->textBox7);
 			this->groupBox2->Controls->Add(this->textBox6);
@@ -326,36 +322,6 @@ namespace GUI {
 			this->radioButton2->Text = L"CPU Time";
 			this->radioButton2->UseVisualStyleBackColor = true;
 			// 
-			// button4
-			// 
-			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->button4->AutoSize = true;
-			this->button4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->button4->Location = System::Drawing::Point(117, 126);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(39, 23);
-			this->button4->TabIndex = 7;
-			this->button4->Text = L"Stop";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
-			// 
-			// button2
-			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->button2->AutoSize = true;
-			this->button2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->button2->Location = System::Drawing::Point(95, 80);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(39, 23);
-			this->button2->TabIndex = 3;
-			this->button2->Text = L"Stop";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
-			// 
 			// MyForm
 			// 
 			this->ClientSize = System::Drawing::Size(481, 339);
@@ -377,17 +343,17 @@ namespace GUI {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		this->button1->Enabled = false;
-		this->button2->Enabled = true;
+		//this->button2->Enabled = true;
 		bruteforceTargetString = msclr::interop::marshal_as<std::string>(textBox1->Text);
 		textBox2->Text = "";
 		/*
 		ThreadWork^ worker = gcnew ThreadWork();
 		System::Threading::Thread^ bruteForceWorker = gcnew System::Threading::Thread(gcnew System::Threading::ParameterizedThreadStart(worker, &ThreadWork::bruteforceWork));
 		this->textBox2->Text = worker->getText();
-		*/
-
 		bruteForceWorker->Start(textBox1->Text);
 		bruteForceWorker->Join();
+		*/
+
 
 		
 		if (this->radioButton1->Checked == true)
@@ -396,20 +362,20 @@ namespace GUI {
 			generateWithBruteForce(this->textBox2, CpuTimeMetrics());
 
 		this->button1->Enabled = true;
-		this->button2->Enabled = false;
+		//this->button2->Enabled = false;
 
 		
 
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->button1->Enabled = true;//stop bruteforce
-		this->button2->Enabled = false;
+		//this->button2->Enabled = false;
 
 
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->button3->Enabled = false;//start GA
-		this->button4->Enabled = true;
+		//this->button4->Enabled = true;
 
 		populationSize = Convert::ToUInt32(textBox4->Text);
 		numberOfIterations = Convert::ToUInt32(textBox5->Text);
@@ -423,11 +389,11 @@ namespace GUI {
 		else if (this->radioButton2->Checked == true)
 			generateWithGA(this->textBox8, CpuTimeMetrics());
 		this->button3->Enabled = true;
-		this->button4->Enabled = false;
+		//this->button4->Enabled = false;
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->button3->Enabled = true;//stop GA
-		this->button4->Enabled = false;
+		//this->button4->Enabled = false;
 	}
 	};
 }
