@@ -39,12 +39,12 @@ public:
 	void stop();
 	
 	inline friend std::ostream& operator<<(std::ostream& out, const ClockTicksMetrics& p){
-		return out << "Clock ticks:" << p.clockTicks << "\n";
+		return out << "Clock:" << p.clockTicks << "\n";
 	}
 	inline std::string printResult()
 	{
 
-		return "Clock ticks:" + std::to_string(clockTicks) +"\n";
+		return "Clock:" + std::to_string(clockTicks) +"\n";
 
 	}
 protected:

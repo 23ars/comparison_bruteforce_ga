@@ -79,6 +79,7 @@
   <ItemGroup>
     <ClInclude Include="BruteForceDLL.h" />
     <ClInclude Include="BruteForceParallelisation.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -97,6 +98,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BruteForceDLL.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
